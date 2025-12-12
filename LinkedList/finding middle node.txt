@@ -1,0 +1,57 @@
+#include <bits/stdc++.h>
+using namespace std;
+class Node{
+public:
+    int data;
+    Node* next;
+    Node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+int main()
+{
+    Node *head=NULL;
+    Node *temp=NULL;
+    cout<<"enter no. of nodes to be created"<<endl;
+    int n;
+    cin>>n;
+    cout<<"enter the values"<<endl;
+    for(int i=0;i<n;i++){
+        int val;
+        cin>>val;
+        Node *nNode=new Node(val);
+        if(head==NULL){
+            head=nNode;
+            temp=nNode;
+        }
+        else{
+            temp->next=nNode;
+            temp=temp->next;
+        }
+    }
+    cout << "The linked list contains: ";
+    temp=head;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp = temp->next; 
+    }
+    cout << endl; 
+    
+    cout<< "finding the middle node in the ll"<<endl;
+    Node* slow=head;
+    Node* fast=head;
+    while(fast!=NULL && fast->next!=NULL){
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    
+    /*
+    //in even number of nodes printing the second node as center
+    if(fast==NULL) cout<<slow->data<<endl; //odd no. of nodes
+    else cout<<slow->next->data<<endl; // even no. of npdes
+    */
+    
+    //to print the middle node of the ll (i.e in odd it is middle but in even it the first node) is same for two cases
+    cout<<slow->data;
+}
