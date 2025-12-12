@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+vector<string>res;
+void psubs(string s,int i,string r,vector<string>&res){
+    if(i==s.length()){
+        res.push_back(r);
+        return;
+    }
+    psubs(s,i+1,r+s[i],res);
+    psubs(s,i+1,r,res);
+    
+}
+int main()
+{
+    psubs("yash",0,"",res);
+    for(auto c:res) cout<<c<<endl;
+}
